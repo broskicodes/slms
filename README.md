@@ -2,7 +2,7 @@
 
 This repo contains the code to train a simple language model on the [TinyStories](https://huggingface.co/datasets/roneneldan/TinyStories) dataset.
 
-The purpose of the repo is for me to experiment with creating small language models (SLMs) for very specific tasks; in this case writing short stories. The idea comes from a combination of the [LIMA] and [TinyStories] research papers. They describe how to improve performance of language models based on small, but high quality, curated datasets.
+The purpose of the repo is for me to experiment with creating small language models (SLMs) for very specific tasks; in this case writing short stories. The idea comes from a combination of the [LIMA](https://arxiv.org/pdf/2305.11206.pdf) and [TinyStories](https://arxiv.org/pdf/2305.07759.pdf) research papers. They describe how to improve performance of language models based on small, but high quality, curated datasets.
 
 ## Training
 
