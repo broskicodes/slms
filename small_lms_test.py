@@ -10,7 +10,7 @@ from tokenizers import Tokenizer
 
 from tqdm.auto import tqdm
 
-from model import BigramModel
+from nano_gpt_model import NanoGPT
 # -----------------------------
 
 # setup cuda
@@ -26,13 +26,13 @@ tokenizer = Tokenizer.from_file(tokenizer_file)
 # -----------------------------
 
 # load model
-checkpoint = torch.load("checkpoints/4head-1.456M-checkpoint-2.pt")
+checkpoint = torch.load("checkpoints/3-epoch-4.484M-checkpoint-2.pt")
 hyperparameters = checkpoint['hyperparameters']
-model = BigramModel(hyperparameters, device).to(device)
+model = NanoGPT(hyperparameters, device).to(device)
 model.load_state_dict(checkpoint['model'])
 # -----------------------------
 
 # generate text
 context = torch.tensor([[314, 324, 66, 283, 14]], dtype=torch.long, device=device)
-print(tokenizer.decode(model.generate(context, max_new_tokens=512)[0].tolist()))
+print(tokenizer.decode(model.generate(context, max_new_tokens=256)[0].tolist()))
 # -----------------------------

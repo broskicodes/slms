@@ -4,6 +4,10 @@ This repo contains the code to train a simple language model on the [TinyStories
 
 The purpose of the repo is for me to experiment with creating small language models (SLMs) for very specific tasks; in this case writing short stories. The idea comes from a combination of the [LIMA](https://arxiv.org/pdf/2305.11206.pdf) and [TinyStories](https://arxiv.org/pdf/2305.07759.pdf) research papers. They describe how to improve performance of language models based on small, but high quality, curated datasets.
 
+## Hosting
+
+This model is not officially hosted. You can however, find download and use the model through HuggingFace AutoModels. Here is the [link](https://huggingface.co/broskicodes/simple-stories-4M).
+
 ## Training
 
 All code needed to train and run the model is provided. Including code to train a custom tokenizer.

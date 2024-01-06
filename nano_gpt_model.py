@@ -72,8 +72,8 @@ class Block(nn.Module):
     x = x + self.ffwd(self.ln2(x)) # [batch_size, block_size, n_embed]
     return x
 
-class BigramModel(nn.Module):
-  def __init__(self, hyperparameters, device):
+class NanoGPT(nn.Module):
+  def __init__(self, hyperparameters, device="cpu"):
     super().__init__()
     
     # hyperparameters

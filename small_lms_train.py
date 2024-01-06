@@ -10,7 +10,7 @@ from tokenizers import Tokenizer
 import evaluate
 
 from tqdm.auto import tqdm
-from model import BigramModel
+from nano_gpt_model import NanoGPT
 # -----------------------------
 
 # setup cuda
@@ -32,9 +32,9 @@ hyperparameters = {
   "vocab_size": tokenizer.get_vocab_size(),
   "batch_size": 8,
   "block_size": 1080,
-  "learning_rate": 1.7e-2,
-  "n_embed": 128,
-  "n_heads": 4,
+  "learning_rate": 1.5e-2,
+  "n_embed": 256,
+  "n_heads": 2,
   "n_layers": 4,
   "dropout": 0.1,
 }
@@ -64,7 +64,7 @@ val_ids = val_ids.shuffle().select(range(3000))
 # -----------------------------
 
 # setup model and trainer
-model = BigramModel(hyperparameters, device).to(device)
+model = NanoGPT(hyperparameters, device).to(device)
 train_dataloader = DataLoader(train_ids, batch_size=batch_size, shuffle=True)
 val_dataloader = DataLoader(val_ids, batch_size=batch_size, shuffle=True)
 
@@ -74,11 +74,11 @@ num_params = sum(p.numel() for p in model.parameters())/1e6
 num_training_steps = n_epochs * len(train_dataloader)
 scheduler = lr_scheduler.OneCycleLR(optimizer=optimizer, max_lr=learning_rate, total_steps=num_training_steps)
 # scheduler = lr_scheduler.StepLR(optimizer, step_size=1000, gamma=0.8)
-print(f"{num_params:.2f}M parameters")
+print(f"{num_params:.3f}M parameters")
 # -----------------------------
 
 # load checkpoint
-# checkpoint = torch.load("checkpoints/4head-1.456M-checkpoint-1.pt")
+# checkpoint = torch.load("checkpoints/6head-1.452M-checkpoint-0.pt")
 # model.load_state_dict(checkpoint['model'])
 # optimizer.load_state_dict(checkpoint['optimizer'])
 # scheduler.load_state_dict(checkpoint['scheduler'])
@@ -163,7 +163,7 @@ for epoch in range(n_epochs):
             "val_loss": avg_val_loss,
             "train_loss": avg_train_loss.item(),
         }
-        torch.save(checkpoint, f"checkpoints/4head-{num_params:.3f}M-checkpoint-{epoch}.pt")
+        torch.save(checkpoint, f"checkpoints/3-epoch-{num_params:.3f}M-checkpoint-{epoch}.pt")
         # -----------------------------
 # -----------------------------
 

@@ -3,3 +3,5 @@ data/*
 !data/hyperparameters.json
 !data/TinyStories-tokenizer.json
 *.ipynb
+
+simple_stories_4m_model
