@@ -1,0 +1,11 @@
+transformers
+datasets
+accelerate
+evaluate
+matplotlib
+pandas
+numpy
+scipy
+cudatoolkit
+scikit-learn
+torch

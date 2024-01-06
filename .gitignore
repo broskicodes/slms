@@ -1,0 +1,5 @@
+__pycache__
+data/*
+!data/hyperparameters.json
+!data/TinyStories-tokenizer.json
+*.ipynb
