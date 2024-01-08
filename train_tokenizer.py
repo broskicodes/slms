@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 # imports
 from datasets import load_dataset, Dataset, concatenate_datasets
 import pandas as pd

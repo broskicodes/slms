@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 # imports
 import torch
 import torch.nn as nn
@@ -14,9 +16,11 @@ from model import BigramModel
 # -----------------------------
 
 # setup cuda
-torch.cuda.memory._record_memory_history()
-device = "cuda" if torch.cuda.is_available() else "cpu"
-torch.set_default_device("cpu")
+if torch.cuda.is_available():
+  torch.cuda.memory._record_memory_history()
+  device = "cuda" 
+else: device="cpu"
+torch.set_default_device(device)
 print(f"using {device}")
 # -----------------------------
 
