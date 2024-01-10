@@ -1,5 +1,6 @@
 transformers
 datasets
+peft
 accelerate
 evaluate
 matplotlib

@@ -1,15 +1,6 @@
 # imports
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
-from torch.utils.data import DataLoader
-from torch.optim import AdamW
-
-from transformers import get_scheduler
 from tokenizers import Tokenizer
-
-from tqdm.auto import tqdm
-
 from nano_gpt_model import NanoGPT
 # -----------------------------
 
@@ -21,12 +12,12 @@ print(f"using {device}")
 # -----------------------------
 
 # load tokenizer
-tokenizer_file = "data/tokenizer-TinyStories3.json"
+tokenizer_file = "data/TinyStories-tokenizer.json"
 tokenizer = Tokenizer.from_file(tokenizer_file)
 # -----------------------------
 
 # load model
-checkpoint = torch.load("checkpoints/3-epoch-4.484M-checkpoint-2.pt")
+checkpoint = torch.load("checkpoints/simple-stories-4M.pt")
 hyperparameters = checkpoint['hyperparameters']
 model = NanoGPT(hyperparameters, device).to(device)
 model.load_state_dict(checkpoint['model'])

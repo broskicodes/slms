@@ -1,13 +1,10 @@
 # imports
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
 from torch.utils.data import DataLoader
 from torch.optim import AdamW, lr_scheduler
 
-from datasets import load_dataset, Dataset, concatenate_datasets
+from datasets import load_dataset, Dataset
 from tokenizers import Tokenizer
-import evaluate
 
 from tqdm.auto import tqdm
 from nano_gpt_model import NanoGPT
