@@ -1,0 +1,13 @@
+{
+  "n_epochs": 2,
+  "vocab_size": 2048,
+  "batch_size": 8,
+  "block_size": 1080,
+  "learning_rate": 4e-2, 
+  "n_embed": 64,
+  "n_heads": 4,
+  "n_layers": 6,
+  "dropout": 0.1,
+  "n_experts": 8,
+  "top_k": 2
+}
